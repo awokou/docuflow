@@ -1,0 +1,57 @@
+#Sever
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-docuflow
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/docuflow
+    username: postgres
+    password: postgres
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: testmail@gmail.com
+    password: password
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+logging:
+  level:
+    root: ERROR
+    com.server.api.docuflow: INFO
+    org.springframework: ERROR
+    org.hibernate: ERROR
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type: ERROR
+    org.springframework.web: INFO
+    org.springframework.security: DEBUG
+
+application:
+  security:
+    jwt:
+      secret: ${JWT_SECRET:404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970}
+      expiration: ${JWT_EXPIRATION:86400000}  # 24h
+
+#ACTUATOR
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
