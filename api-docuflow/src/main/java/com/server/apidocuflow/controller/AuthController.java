@@ -1,14 +1,14 @@
 package com.server.apidocuflow.controller;
 
-import com.server.apidocuflow.service.DocumentService;
+import com.server.apidocuflow.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/documents")
+@RequestMapping("/api/auth")
 @RequiredArgsConstructor
-public class DocumentController {
+public class AuthController {
 
-    private final DocumentService documentService;
+    private final AuthService authService;
 }

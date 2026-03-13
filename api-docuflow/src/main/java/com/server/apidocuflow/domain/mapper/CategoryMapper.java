@@ -8,11 +8,11 @@ import com.server.apidocuflow.domain.entity.Category;
 @Component
 public class CategoryMapper {
 
-    private CategoryDto mapToCategoryDto(Category category) {
-
+    public CategoryDto mapToCategoryDto(Category category) {
         CategoryDto categoryDto = new CategoryDto();
-
+        categoryDto.setId(category.getId());
+        categoryDto.setName(category.getName());
+        categoryDto.setDescription(category.getDescription());
         return categoryDto;
     }
-
 }

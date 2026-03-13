@@ -1,16 +1,19 @@
 package com.server.apidocuflow.service.impl;
 
-import com.server.apidocuflow.domain.dto.external.LoginDto;
 import com.server.apidocuflow.domain.dto.external.UserDto;
-import com.server.apidocuflow.domain.dto.response.AuthResponse;
 import com.server.apidocuflow.domain.dto.response.UserResponse;
+import com.server.apidocuflow.domain.entity.User;
+import com.server.apidocuflow.exception.ResourceNotFoundException;
 import com.server.apidocuflow.repository.UserRepository;
 import com.server.apidocuflow.service.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -18,12 +21,7 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
 
     @Override
-    public AuthResponse createUser(UserDto userDto) {
-        return null;
-    }
-
-    @Override
-    public AuthResponse login(LoginDto loginDto) {
+    public UserDto createUser(UserDto userDto) {
         return null;
     }
 
@@ -38,12 +36,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(Long id, UserDto userDto) {
-
+    @Transactional
+    public UserDto updateUser(Long id, UserDto userDto) {
+      return null;
     }
 
     @Override
+    @Transactional
     public void deleteUserById(Long id) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User with id " + id + " does not exist"));
 
+        userRepository.delete(user);
     }
 }

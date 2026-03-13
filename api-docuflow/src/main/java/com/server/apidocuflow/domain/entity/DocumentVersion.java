@@ -2,7 +2,6 @@ package com.server.apidocuflow.domain.entity;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.ForeignKey;
 import jakarta.persistence.GeneratedValue;
